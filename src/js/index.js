@@ -1,6 +1,7 @@
-const arr = [543, 534, 53, 6, 54];
-const ad = (a) => {
-  console.log(`too: ${a}`);
-};
-const arr2 = [...arr, 67, 809];
-ad(arr2[0]);
+import a from "./model/Search";
+import { add, multiply } from "./view/SearchView";
+import { id as dog } from "./view/SearchView";
+
+console.log("search: " + a);
+console.log(add(43, 4));
+console.log("id" + dog);
