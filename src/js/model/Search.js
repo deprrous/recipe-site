@@ -11,10 +11,10 @@ export default class Search {
         "https://forkify-api.herokuapp.com/api/search?q=" + this.query
       );
 
-      this.res = res.data.recipes;
-      return this.res;
+      this.result = res.data.recipes;
+      return this.result;
     } catch (error) {
-      alert(error);
+      console.log("Асуудал гарлаа: " + error);
     }
   }
 }
