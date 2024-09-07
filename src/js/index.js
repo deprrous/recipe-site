@@ -1,7 +1,7 @@
-import a from "./model/Search";
-import { add, multiply } from "./view/SearchView";
-import { id as dog } from "./view/SearchView";
+require("@babel/polyfill");
 
-console.log("search: " + a);
-console.log(add(43, 4));
-console.log("id" + dog);
+import Search from "./model/Search";
+let search = new Search("pizza");
+search.doSearch().then((r) => {
+  console.log("result: " + r);
+});
