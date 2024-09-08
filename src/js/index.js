@@ -37,3 +37,13 @@ elements.searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
   controlSearch();
 });
+
+elements.pageButtons.addEventListener("click", (event) => {
+  const btn = event.target.closest(".btn-inline");
+
+  if (btn) {
+    const goto = parseInt(btn.dataset.goto);
+    searchView.clearSearchResult();
+    searchView.renderRepices(state.search.result, goto);
+  }
+});
