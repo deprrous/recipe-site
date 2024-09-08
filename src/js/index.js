@@ -2,6 +2,7 @@ require("@babel/polyfill");
 import Search from "./model/Search";
 import { elements, renderLoader, clearLoader } from "./view/Base";
 import * as searchView from "./view/SearchView";
+import Recipe from "./model/Recipe";
 /**
  * Web app tuluw
  * -Hailtiin query,ur dun
