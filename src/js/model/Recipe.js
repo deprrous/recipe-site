@@ -22,4 +22,17 @@ export default class Recipe {
       console.log("Асуудал гарлаа: " + error);
     }
   }
+
+  calcTime() {
+    let len;
+    if (Array.isArray(this.ingredients)) {
+      len = this.ingredients.length;
+    } else {
+      console.log("this is not array");
+    }
+    this.time = len * 5;
+  }
+  calcHuniiToo() {
+    this.huniiToo = 4;
+  }
 }

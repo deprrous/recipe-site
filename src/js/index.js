@@ -3,6 +3,11 @@ import Search from "./model/Search";
 import { elements, renderLoader, clearLoader } from "./view/Base";
 import * as searchView from "./view/SearchView";
 import Recipe from "./model/Recipe";
+import {
+  highlightSelectedRecipe,
+  renderRecipe,
+  clearRecipe,
+} from "./view/RecipeView";
 /**
  * Web app tuluw
  * -Hailtiin query,ur dun
@@ -12,7 +17,7 @@ import Recipe from "./model/Recipe";
  */
 
 const state = {};
-
+// search controller
 const controlSearch = async () => {
   // 1.webees hailtiin tulhuur ugiig gargaj awna.
   const query = searchView.getInput();
@@ -48,3 +53,29 @@ elements.pageButtons.addEventListener("click", (event) => {
     searchView.renderRepices(state.search.result, goto);
   }
 });
+
+// Joriin controller
+
+const controlRecipe = async () => {
+  // 1 URL-s ID-g salgaj awna
+  const id = window.location.hash.replace("#", "");
+  // 2 joriin mododeliig uusgej ugnu
+  state.recipe = new Recipe(id);
+  // 3 UI delgetsiig beltgene
+  renderLoader(elements.recipeDiv);
+
+  highlightSelectedRecipe(id);
+  clearRecipe();
+  // 4 Joroo tataj awch irne
+  await state.recipe.getRecipe();
+  clearLoader();
+  // 5 joriig guitsetgeh hugatsaa bolon ortsiig tootsoolno.
+  state.recipe.calcTime();
+  state.recipe.calcHuniiToo();
+
+  // 6 joroo delgetsend gargana
+  renderRecipe(state.recipe);
+};
+
+window.addEventListener("hashchange", controlRecipe);
+window.addEventListener("load", controlRecipe);
